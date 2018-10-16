@@ -10,15 +10,17 @@ import Disqus from '../../atoms/disqus';
 import Share from '../../atoms/share';
 import './style.scss';
 
+const { DRUPAL_HOST } = process.env;
+
 const ArticlePage = ({ data }) => (
   <Layout
     showFooterCta
-    postUrl={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.path.alias}`}
+    postUrl={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`}
     postSlug={data.nodeArticle.path.alias}
     postTitle={data.nodeArticle.title}
     postDesc={data.nodeArticle.fields.markdownBody.childMarkdownRemark.excerpt}
     postDate={data.nodeArticle.fields.created_formatted}
-    postImage={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid}`}
+    postImage={`${DRUPAL_HOST}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid}`}
     isBlogPost
   >
     <Hero
@@ -46,7 +48,7 @@ const ArticlePage = ({ data }) => (
                 ))
             }
           </div>
-          <Share shareUrl={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
+          <Share shareUrl={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
           {!data.nodeArticle.relationships.field_related_post ? null : (
             <div className="c-article__related-post">
               <div className="">
@@ -71,7 +73,7 @@ const ArticlePage = ({ data }) => (
           }
           <div className="">
             <Disqus
-              articleId={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.path.alias}`}
+              articleId={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`}
               title={data.nodeArticle.title}
             />
           </div>
@@ -84,14 +86,6 @@ export default ArticlePage;
 
 export const query = graphql`
   query($slug: String!) {
-    site {
-      siteMetadata {
-        domain
-        drupal {
-          host
-        }
-      }
-    }
     allSiteSettingEntitySite {
       edges {
         node {

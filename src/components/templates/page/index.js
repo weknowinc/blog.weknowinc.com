@@ -7,13 +7,14 @@ import Layout from '../layout';
 import './style.scss';
 
 const dateFormat = require('date-fns/format');
+const { DRUPAL_HOST } = process.env;
 
 const Page = ({ data }) => {
   return (
     <Layout
       showFooterCta
       darkMenu
-      postUrl={data.site.siteMetadata.domain}
+      postUrl={DRUPAL_HOST}
       postTitle={data.allSiteSettingEntitySite.edges[0].node.field_name}
       postDesc={data.allSiteSettingEntitySite.edges[0].node.field_description}
       postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
@@ -43,11 +44,6 @@ export default Page;
 
 export const query = graphql`
   query($slug: String!) {
-    site {
-      siteMetadata {
-        domain
-      }
-    }
     allSiteSettingEntitySite {
       edges {
         node {
