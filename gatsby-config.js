@@ -6,7 +6,7 @@ dotenv.config({
 
 //* @TODO 
 // read title from .env
-// replace siteMetadata.domain with siteMetadata.host.drupal
+// replace siteMetadata.domain with siteMetadata.drupal.host
 module.exports = {
   siteMetadata: {
     title: 'Blog',
@@ -14,7 +14,7 @@ module.exports = {
     drupal: {
       host: `${process.env.DRUPAL_HOST}`,
       deploy: `${process.env.DRUPAL_DEPLOY}`,
-      domain: `${process.env.DRUPAL_DOMAIN}`
+      site: `${process.env.DRUPAL_SITE}`
     }
   },
   pathPrefix: '/blog.weknowinc.com',

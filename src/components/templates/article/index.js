@@ -13,12 +13,12 @@ import './style.scss';
 const ArticlePage = ({ data }) => (
   <Layout
     showFooterCta
-    postUrl={`${data.site.siteMetadata.domain}${data.nodeArticle.path.alias}`}
+    postUrl={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.path.alias}`}
     postSlug={data.nodeArticle.path.alias}
     postTitle={data.nodeArticle.title}
     postDesc={data.nodeArticle.fields.markdownBody.childMarkdownRemark.excerpt}
     postDate={data.nodeArticle.fields.created_formatted}
-    postImage={`${data.site.siteMetadata.domain}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid}`}
+    postImage={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid}`}
     isBlogPost
   >
     <Hero
@@ -46,7 +46,7 @@ const ArticlePage = ({ data }) => (
                 ))
             }
           </div>
-          <Share shareUrl={`${data.site.siteMetadata.domain}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
+          <Share shareUrl={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
           {!data.nodeArticle.relationships.field_related_post ? null : (
             <div className="c-article__related-post">
               <div className="">
@@ -71,7 +71,7 @@ const ArticlePage = ({ data }) => (
           }
           <div className="">
             <Disqus
-              articleId={`${data.site.siteMetadata.domain}${data.nodeArticle.path.alias}`}
+              articleId={`${data.site.siteMetadata.drupal.host}${data.nodeArticle.path.alias}`}
               title={data.nodeArticle.title}
             />
           </div>
@@ -87,6 +87,9 @@ export const query = graphql`
     site {
       siteMetadata {
         domain
+        drupal {
+          host
+        }
       }
     }
     allSiteSettingEntitySite {
