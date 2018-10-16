@@ -51,7 +51,6 @@ module.exports = {
           {
             resolve: 'gatsby-remark-embed-gist',
             options: {
-              username: 'jmolivas',
               includeDefaultCss: true
             }
           },
