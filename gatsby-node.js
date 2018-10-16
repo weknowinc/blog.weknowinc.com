@@ -14,11 +14,10 @@ const _isEmpty = require('lodash/isEmpty');
 const dateFormat = require('date-fns/format');
 const crypto = require('crypto');
 const dotenv = require('dotenv');
-
 const configPostCss = path.resolve(__dirname, './');
 
 dotenv.config({
-  path: '.env'
+  path: `.env.${process.env.NODE_ENV}`
 });
 
 fs.emptyDir('./static/media/');

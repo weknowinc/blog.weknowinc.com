@@ -4,15 +4,11 @@ import Layout from '../components/templates/layout';
 import Home from '../components/templates/home';
 
 const dateFormat = require('date-fns/format');
+const { DRUPAL_HOST } = process.env;
 
 const IndexPage = () => (
   <StaticQuery
     query={graphql`{
-      site{
-        siteMetadata{
-          domain
-        }
-      }
       allSiteSettingEntitySite {
         edges {
           node {
@@ -87,7 +83,7 @@ const IndexPage = () => (
       const cover = data.file.childImageSharp.fluid;
       return (
         <Layout
-          postUrl={data.site.siteMetadata.domain}
+          postUrl={DRUPAL_HOST}
           postTitle={settings.field_name}
           postDesc={settings.field_description}
           postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}

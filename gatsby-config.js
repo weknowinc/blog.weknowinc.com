@@ -1,21 +1,13 @@
 const dotenv = require('dotenv');
 
 dotenv.config({
-  path: '.env'
+  path: `.env.${process.env.NODE_ENV}`
 });
 
 //* @TODO 
-// read title from .env
-// replace siteMetadata.domain with siteMetadata.drupal.host
 module.exports = {
   siteMetadata: {
     title: 'Blog',
-    domain: `${process.env.DRUPAL_HOST}`,
-    drupal: {
-      host: `${process.env.DRUPAL_HOST}`,
-      deploy: `${process.env.DRUPAL_DEPLOY}`,
-      site: `${process.env.DRUPAL_SITE}`
-    }
   },
   pathPrefix: '/blog.weknowinc.com',
   plugins: [
@@ -106,8 +98,6 @@ module.exports = {
             site {
               siteMetadata {
                 title
-                domain
-                domain_prefix
               }
             }
           }
@@ -118,8 +108,8 @@ module.exports = {
               id: edge.node.id,
               description: edge.node.fields.markdownBody.childMarkdownRemark.excerpt,
               title: edge.node.title,
-              url: `${site.siteMetadata.domain_prefix}/${edge.node.fields.slug}`,
-              guid: `${site.siteMetadata.domain_prefix}/${edge.node.fields.slug}`,
+              url: `${process.env.PROJECT_URL}/${edge.node.fields.slug}`,
+              guid: `${process.env.PROJECT_URL}/${edge.node.fields.slug}`,
               custom_elements: [{ pubDate: edge.node.fields.created_formatted }]
             })),
             query: `
