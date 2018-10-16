@@ -1,0 +1,22 @@
+
+/* footer */
+
+.c-footer{
+  &__cta{
+    background-color: color(primary);
+    padding: 2rem;
+    text-decoration: none;
+  }
+  &__top{
+    height: $footer-height;
+    background-color: color(white);
+  }
+  &__bottom{
+    background-color: color('text');
+    color: color(white);
+    height: $footer-height;
+  }
+  &__logo{
+    width: 220px;
+  }
+}
