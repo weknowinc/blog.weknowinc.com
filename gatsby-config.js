@@ -9,7 +9,7 @@ module.exports = {
   siteMetadata: {
     title: 'Blog',
   },
-  pathPrefix: '/blog.weknowinc.com',
+  // pathPrefix: '/blog.weknowinc.com',
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',

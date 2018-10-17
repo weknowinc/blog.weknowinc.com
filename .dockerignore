@@ -1,0 +1,20 @@
+# Generic
+**/*.log
+**/.dockerignore
+**/.DS_Store
+**/.git/
+**/.gitattributes
+**/.gitignore
+**/.gitmodules
+**/Dockerfile*
+**/Thumbs.db
+.editorconfig
+
+# Project dependencies
+.cache
+node_modules
+yarn-error.log
+
+# Build directory
+/public
+/static/media/images/
