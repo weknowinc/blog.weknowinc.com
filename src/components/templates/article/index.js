@@ -10,17 +10,17 @@ import Disqus from '../../atoms/disqus';
 import Share from '../../atoms/share';
 import './style.scss';
 
-const { DRUPAL_HOST } = process.env;
+const { PROJECT_URL } = process.env;
 
 const ArticlePage = ({ data }) => (
   <Layout
     showFooterCta
-    postUrl={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`}
+    postUrl={`${PROJECT_URL}${data.nodeArticle.path.alias}`}
     postSlug={data.nodeArticle.path.alias}
     postTitle={data.nodeArticle.title}
     postDesc={data.nodeArticle.fields.markdownBody.childMarkdownRemark.excerpt}
     postDate={data.nodeArticle.fields.created_formatted}
-    postImage={`${DRUPAL_HOST}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid}`}
+    postImage={`${PROJECT_URL}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
     isBlogPost
   >
     <Hero
@@ -48,7 +48,7 @@ const ArticlePage = ({ data }) => (
                 ))
             }
           </div>
-          <Share shareUrl={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
+          <Share shareUrl={`${PROJECT_URL}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
 
         </div>
         <div className="cell small-11 medium-12 large-12">
@@ -76,7 +76,7 @@ const ArticlePage = ({ data }) => (
         }
           <div className="">
             <Disqus
-              articleId={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`}
+              articleId={`${PROJECT_URL}${data.nodeArticle.path.alias}`}
               title={data.nodeArticle.title}
             />
           </div>
