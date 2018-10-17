@@ -15,7 +15,7 @@ const Hero = ({
     <div className="c-hero__cover" style={{ backgroundColor: color }} />
     <div className="c-hero__content cell medium-10 large-6 grid-x align-center-middle u-text-align-center">
       <h2 className="cell">{title}</h2>
-      {!tagline ? null : <h3 className="cell">{tagline}</h3>}
+      {!tagline ? null : <h3 className="cell c-hero__tagline">{tagline}</h3>}
       {!social ? null : (
         <div className="c-hero__social cell medium-6 large-8 grid-x align-center-middle">
           {(!social.facebook) ? null : (
@@ -55,7 +55,7 @@ const Hero = ({
           )}
         </div>
       )}
-      {!info ? null : <p className="cell u-tiny-text">{info}</p>}
+      {!info ? null : <p className="cell c-hero__info u-push-top--3x">{info}</p>}
     </div>
   </div>
 );

@@ -60,7 +60,7 @@
     "install": "^0.12.1",
     "lodash": "^4.17.11",
     "npm": "^6.4.1",
-    "nucleon-ui": "^1.0.1",
+    "nucleon-ui": "^1.0.4",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",

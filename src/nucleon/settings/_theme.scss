@@ -7,8 +7,8 @@
 // Base typographical styles and baseline grid. You need to define these values
 // in pixels
 
-$global-font-size:    16px;
-$global-line-height:  20px;
+$global-font-size:    14px;
+$global-line-height:  22px;
 
 // Spacing values are determined based on your project’s global line height (i.e
 // your baseline grid). It is not recommended that you modify these following
@@ -39,6 +39,7 @@ $alternative-font: 'Roboto', sans-serif;
 $sans-font: 'Signika', HelveticaNeue, 'Arimo', 'Roboto', Helvetica, Arial, sans-serif;
 $serif-font: 'Josefin Sans', serif;
 $general-font: $sans-font;
+$body-font-size: 18px;
 
 $global-max-width: 1200px;
 
