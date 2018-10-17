@@ -13,13 +13,19 @@ class Layout extends Component {
     super(props);
     this.state = {
       scrolledMenu: false,
-      showSidebar: false
+      isMobile: false,
+      showSidebar: false,
+      mobileSize: 560
     };
   }
 
   componentDidMount = () => {
-    if(typeof window !== 'undefined')
+    if(typeof window !== 'undefined'){
       window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('resize', this.handleResize);
+      const isMobile = window.innerWidth > this.state.mobileSize;
+      this.setState({isMobile});
+    }
   }
 
   componentWillUnmount = () => {
@@ -28,6 +34,12 @@ class Layout extends Component {
   }
 
   handleScroll = (event) => this.setState({ scrolledMenu: event.srcElement.scrollingElement.scrollTop > 30 });
+  handleResize = (event) => {
+    const isMobile = window.innerWidth > this.state.mobileSize;
+    this.setState({ 
+      isMobile 
+    });
+  }
   handleShowSidebar = () => {
     this.setState({showSidebar: !this.state.showSidebar});
   }
@@ -68,7 +80,7 @@ class Layout extends Component {
             <div className="c-layout">
               <Sidebar showSidebar={this.state.showSidebar} hideSidebar={this.handleShowSidebar} />
               <div className="cell medium-cell-block">
-                <Header scrolled={this.state.scrolledMenu} siteTitle={field_name} showSidebar={this.handleShowSidebar} darkMenu={this.props.darkMenu} />
+                <Header scrolled={this.state.scrolledMenu} isMobile={this.state.isMobile} siteTitle={field_name} showSidebar={this.handleShowSidebar} darkMenu={this.props.darkMenu} />
                 <div className="c-layout__main cell medium-cell-block">
                   {children}
                 </div>

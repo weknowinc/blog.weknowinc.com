@@ -4,15 +4,17 @@ import { Link } from 'gatsby';
 import './style.scss';
 import Button from '../../atoms/button';
 
-const Header = ({ scrolled, showSidebar, darkMenu }) => (
+const Header = ({
+  scrolled, isMobile, showSidebar, darkMenu
+}) => (
   <div className="grid-x align-middle c-header">
-    {(!scrolled)
+    {(!scrolled && isMobile)
       ? (
         <div className="c-header__normal cell grid-container align-right grid-x">
-          <div className="cell grid-x medium-6 align-right grid-x">
-            <div className={`cell medium-2 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><Link className="c-header__menu-link" to="/">Home</Link></div>
-            <div className={`cell medium-2 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><Link className="c-header__menu-link" to="/about">About me</Link></div>
-            <div className={`cell medium-4 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><a className="c-header__menu-link c-header__menu-link--cta" href="https://weknowinc.com/contact" target="_blank" rel="noopener noreferrer">Partner with WeKnow</a></div>
+          <div className="cell grid-x small-12 medium-8 large-7 xlarge-6 xxlarge-6 align-right grid-x">
+            <div className={`cell small-3 medium-2 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><Link className="c-header__menu-link" to="/">Home</Link></div>
+            <div className={`cell small-3 medium-2 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><Link className="c-header__menu-link" to="/about">About me</Link></div>
+            <div className={`cell small-6 medium-4 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><a className="c-header__menu-link c-header__menu-link--cta" href="https://weknowinc.com/contact" target="_blank" rel="noopener noreferrer">Partner with WeKnow</a></div>
           </div>
         </div>
       )
@@ -46,13 +48,15 @@ const Header = ({ scrolled, showSidebar, darkMenu }) => (
 Header.propTypes = {
   scrolled: PropTypes.bool,
   showSidebar: PropTypes.func,
-  darkMenu: PropTypes.bool
+  darkMenu: PropTypes.bool,
+  isMobile: PropTypes.bool
 };
 
 Header.defaultProps = {
   scrolled: false,
   showSidebar: null,
-  darkMenu: false
+  darkMenu: false,
+  isMobile: false
 };
 
 export default Header;
