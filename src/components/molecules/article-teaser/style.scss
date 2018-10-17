@@ -10,8 +10,8 @@
   &__title{
     font-family: $serif-font;
     font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.7rem;
+    font-size: 26px;
+    line-height: 32px;
     margin-bottom: .3rem;
     text-transform: uppercase;
     a{
@@ -20,7 +20,7 @@
     }
   }
   &__date{
-    font-size: 12px;
+    font-size: 14px;
     line-height: 15px;
     margin-bottom: .7rem;
     color: color('excerpt');
@@ -28,8 +28,8 @@
   &__resume{
     font-family: $serif-font;
     font-weight: 300;
-    font-size: 1.3rem;
-    line-height: 1.5rem;
+    font-size: 22px;
+    line-height: 26px;
     margin-bottom: .5rem;
     text-transform: uppercase;
   }

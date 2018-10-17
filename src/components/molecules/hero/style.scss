@@ -36,15 +36,19 @@
     h2{
       font-weight: 300;
       margin-bottom: 0;
-      font-size: 3rem;
-    }
-    h3{
-      font-weight: 300;
-      font-size: 1.2rem;
+      font-size: 60px;
+      line-height: 70px;
     }
     *:last-child{
       margin-bottom: 0;
     }
+  }
+  &__tagline{
+    font-size: 22px;
+    font-weight: 300;
+  }
+  &__info{
+    font-size: 14px;
   }
   &__social{
     svg{

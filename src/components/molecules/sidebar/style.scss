@@ -34,14 +34,16 @@
     height: 90%;
   }
   &__link{
-    font-size: 2rem;
+    font-size: 40px;
     color: color(white);
     text-decoration: none;
   }
   &__cta{
     background-color: color(white);
     color: color('alternative');
-    padding: .3rem 0.6rem;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
     text-decoration: none;
   }
 }

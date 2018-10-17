@@ -19,7 +19,7 @@ const Footer = ({ showCta, copyContent }) => (
         <div className="cell medium-12 align-center-middle grid-x u-push-bottom--2x">
           <img className="c-footer__logo" src={imageFooter} alt="" />
         </div>
-        <p className="cell medium-12 align-center-middle grid-x u-small-text">{copyContent}</p>
+        <p className="cell medium-12 align-center-middle grid-x u-small-text c-footer__copy">{copyContent}</p>
       </div>
     </div>
   </footer>

@@ -49,6 +49,9 @@ const ArticlePage = ({ data }) => (
             }
           </div>
           <Share shareUrl={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
+
+        </div>
+        <div className="cell small-11 medium-12 large-12">
           {!data.nodeArticle.relationships.field_related_post ? null : (
             <div className="c-article__related-post">
               <div className="">
@@ -70,15 +73,16 @@ const ArticlePage = ({ data }) => (
               </div>
             </div>
           )
-          }
+        }
           <div className="">
             <Disqus
               articleId={`${DRUPAL_HOST}${data.nodeArticle.path.alias}`}
               title={data.nodeArticle.title}
             />
           </div>
+
+        </div>
       </div>
-    </div>
     </div>
   </Layout>
 );
