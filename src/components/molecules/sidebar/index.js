@@ -20,7 +20,7 @@ const Sidebar = ({ showSidebar, hideSidebar }) => (
         </Button>
       </div>
       <div className="c-sidebar__menu cell medium-12 grid-x align-center">
-        <div className="cell medium-8">
+        <div className="cell small-10 medium-8">
           <ul className="o-list-bare u-push-bottom--4x">
             <li>
               <Link className="c-sidebar__link" to="/">Home</Link>
