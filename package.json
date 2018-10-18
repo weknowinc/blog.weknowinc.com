@@ -12,10 +12,10 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "gatsby develop",
+    "serve": "gatsby serve --host 0.0.0.0 --port 9000",
     "commitmsg": "commitlint -E GIT_PARAMS",
     "format": "prettier --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "husky": {
     "hooks": {
@@ -85,7 +85,6 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "gh-pages": "^2.0.1",
     "husky": "^1.0.0-rc.13",
     "node-sass": "^4.9.3",
     "postcss-loader": "^3.0.0",
