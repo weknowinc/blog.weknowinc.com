@@ -49,7 +49,6 @@ const ArticlePage = ({ data }) => (
             }
           </div>
           <Share shareUrl={`${PROJECT_URL}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
-
         </div>
         <div className="cell small-11 medium-12 large-12">
           {!data.nodeArticle.relationships.field_related_post ? null : (
@@ -80,7 +79,6 @@ const ArticlePage = ({ data }) => (
               title={data.nodeArticle.title}
             />
           </div>
-
         </div>
       </div>
     </div>

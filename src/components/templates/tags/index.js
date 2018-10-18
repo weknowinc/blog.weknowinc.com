@@ -8,7 +8,7 @@ import ArticleTeaser from '../../molecules/article-teaser';
 import './style.scss';
 
 const dateFormat = require('date-fns/format');
-const { DRUPAL_HOST } = process.env;
+const { PROJECT_URL } = process.env;
 
 class TagsPage extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class TagsPage extends Component {
     const loader = <div className="cell medium-12 align-center" key="loader">Loading ...</div>;
     return (
       <Layout darkMenu
-        postUrl={`${DRUPAL_HOST}/tags${tagPath}`}
+        postUrl={`${PROJECT_URL}/tags${tagPath}`}
         postTitle={`Tag: ${tagTitle}`}
         postDesc={this.props.data.allSiteSettingEntitySite.edges[0].node.field_description}
         postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
@@ -51,18 +51,18 @@ class TagsPage extends Component {
               hasMore={this.state.hasMoreItems}
               loader={loader}
             >
-                {articles.map(({ node }) => (
-                  <div className="cell medium-6 small-12 large-6 xlarge-6 u-push-bottom" key={node.id}>
-                    <ArticleTeaser
-                      title={node.title}
-                      image={node.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid}
-                      resume={node.field_resume}
-                      excerpt={node.fields.markdownBody.childMarkdownRemark.excerpt}
-                      link={node.path.alias}
-                      date={node.fields.created_formatted}
-                    />
-                  </div>
-                ))}
+              {articles.map(({ node }) => (
+                <div className="cell medium-6 small-12 large-6 xlarge-6 u-push-bottom" key={node.id}>
+                  <ArticleTeaser
+                    title={node.title}
+                    image={node.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid}
+                    resume={node.field_resume}
+                    excerpt={node.fields.markdownBody.childMarkdownRemark.excerpt}
+                    link={node.path.alias}
+                    date={node.fields.created_formatted}
+                  />
+                </div>
+              ))}
             </InfiniteScroll>
           }
           </div>

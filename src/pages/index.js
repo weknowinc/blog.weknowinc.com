@@ -4,7 +4,8 @@ import Layout from '../components/templates/layout';
 import Home from '../components/templates/home';
 
 const dateFormat = require('date-fns/format');
-const { DRUPAL_HOST } = process.env;
+
+const { PROJECT_URL } = process.env;
 
 const IndexPage = () => (
   <StaticQuery
@@ -83,10 +84,11 @@ const IndexPage = () => (
       const cover = data.file.childImageSharp.fluid;
       return (
         <Layout
-          postUrl={DRUPAL_HOST}
+          postUrl={PROJECT_URL}
           postTitle={settings.field_name}
           postDesc={settings.field_description}
           postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
+          heroCover
         >
           <div className="cell medium-cell-block">
             <Home articles={articles} settings={settings} heroCover={cover} />

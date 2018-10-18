@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
 import _slice from 'lodash/slice';
-import { graphql } from 'gatsby';
 
-import homeCover from '../../../../static/hero-cover.png';
 import Hero from '../../molecules/hero';
 import ArticleTeaser from '../../molecules/article-teaser';
 

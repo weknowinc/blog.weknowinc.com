@@ -2,44 +2,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import ReactHtmlParser from 'react-html-parser';
-import Img from "gatsby-image"
+import Img from 'gatsby-image';
 import Layout from '../layout';
 import './style.scss';
 
 const dateFormat = require('date-fns/format');
-const { DRUPAL_HOST } = process.env;
 
-const Page = ({ data }) => {
-  return (
-    <Layout
-      showFooterCta
-      darkMenu
-      postUrl={DRUPAL_HOST}
-      postTitle={data.allSiteSettingEntitySite.edges[0].node.field_name}
-      postDesc={data.allSiteSettingEntitySite.edges[0].node.field_description}
-      postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
-    >
-      <div className="c-page u-push-top--inside--9x u-push-bottom--inside--4x">
-        <div className="grid-container align-center">
-          <div className="c-page__content cell medium-10 large-8 xlarge-8 small-11 grid-x grid-margin-x align-center">
-            <div className="cell medium-6 small-11 large-6">
-              <Img
-                fluid={
+const { PROJECT_URL } = process.env;
+
+const Page = ({ data }) => (
+  <Layout
+    showFooterCta
+    darkMenu
+    postUrl={PROJECT_URL}
+    postTitle={data.allSiteSettingEntitySite.edges[0].node.field_name}
+    postDesc={data.allSiteSettingEntitySite.edges[0].node.field_description}
+    postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
+  >
+    <div className="c-page u-push-top--inside--9x u-push-bottom--inside--4x">
+      <div className="grid-container align-center">
+        <div className="c-page__content cell medium-10 large-8 xlarge-8 small-11 grid-x grid-margin-x align-center">
+          <div className="cell medium-6 small-11 large-6">
+            <Img
+              fluid={
                   data.nodePage.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid
                 }
-                alt="Foto Jesus Manuel Olivas"
-              />
-            </div>
-            <div className="cell medium-6 small-11 large-6">
-              <h1 className="c-page__title">{data.nodePage.title}</h1>
-              { ReactHtmlParser(data.nodePage.fields.markdownBody.childMarkdownRemark.html) }
-            </div>
+              alt={data.allSiteSettingEntitySite.edges[0].node.field_name}
+            />
+          </div>
+          <div className="cell medium-6 small-11 large-6">
+            <h1 className="c-page__title">{data.nodePage.title}</h1>
+            { ReactHtmlParser(data.nodePage.fields.markdownBody.childMarkdownRemark.html) }
           </div>
         </div>
       </div>
-    </Layout>
-  );
-};
+    </div>
+  </Layout>
+);
 export default Page;
 
 export const query = graphql`

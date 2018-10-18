@@ -4,10 +4,10 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`
 });
 
-//* @TODO 
+//* @TODO
 module.exports = {
   siteMetadata: {
-    title: 'Blog',
+    title: `${process.env.SITE_NAME}`
   },
   plugins: [
     {
@@ -69,8 +69,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Jesus Manuel Olivas Blog',
-        short_name: 'jmolivas\'s Blog',
+        name: `${process.env.SITE_NAME}`,
+        short_name: `${process.env.SHORT_NAME}`,
         start_url: '/',
         background_color: '#eaeaea',
         theme_color: '#644b78',
@@ -137,7 +137,7 @@ module.exports = {
             }
             `,
             output: '/drupalplanet.xml',
-            title: 'Jesus Manuel Olivas - WeKnow Blog'
+            title: `${process.env.SITE_NAME}`
           }
         ]
       }

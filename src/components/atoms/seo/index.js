@@ -6,7 +6,7 @@ const config = {
   title: '',
   logo: '',
   url: '',
-  twitter: 'jmolivas'
+  twitter: ''
 };
 
 const getSchemaOrgJSONLD = ({
@@ -105,7 +105,7 @@ const SEO = ({
     >
       {/* General tags */}
       <meta name="image" content={image} />
-
+      <meta name="description" content={description} />
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
@@ -121,7 +121,7 @@ const SEO = ({
 
       {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={config.twitter} />
+      <meta name="twitter:creator" content={postData.twitterHandler} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />

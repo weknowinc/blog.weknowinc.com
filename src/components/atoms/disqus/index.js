@@ -1,17 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
 import { DiscussionEmbed } from 'disqus-react';
 
 const Disqus = ({ articleId, title }) => {
-  const disqusShortname = 'jmolivas';
   const disqusConfig = {
     identifier: articleId,
     title
   };
-  return (
-    <div className="c-disqus cell auto align-self-middle align-self-center">
-      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-    </div>
+  return (<StaticQuery
+    query={graphql`{
+      allSiteSettingEntitySite {
+        edges {
+          node {
+            field_disqus_shortname
+          }
+        }
+      }
+    }
+    `}
+    render={(data) => {
+      const { field_disqus_shortname: disqusShortName } = data.allSiteSettingEntitySite.edges[0].node;
+      return (
+        <div className="c-disqus cell auto align-self-middle align-self-center">
+          <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
+        </div>
+      );
+    }}
+  />
   );
 };
 

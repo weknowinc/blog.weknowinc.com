@@ -21,8 +21,8 @@ class Layout extends Component {
 
   componentDidMount = () => {
     if(typeof window !== 'undefined'){
-      window.addEventListener('scroll', this.handleScroll);
-      window.addEventListener('resize', this.handleResize);
+      window.addEventListener('scroll', this.handleScroll, {passive: true});
+      window.addEventListener('resize', this.handleResize, {passive: true});
       const isMobile = window.innerWidth > this.state.mobileSize;
       this.setState({isMobile});
     }
@@ -56,19 +56,21 @@ class Layout extends Component {
                 field_footer
                 field_keywords
                 field_description
+                field_twitter_handle
               }
             }
           }
         }
         `}
         render={data => {
-          const {field_name, field_footer, field_keywords, field_description } = data.allSiteSettingEntitySite.edges[0].node
+          const {field_name, field_footer, field_twitter_handle } = data.allSiteSettingEntitySite.edges[0].node
           const postData = {
             title: this.props.postTitle,
             description: this.props.postDesc,
             slug:this.props.postSlug,
             url:this.props.postUrl,
-            datePublished: this.props.postDate
+            datePublished: this.props.postDate,
+            twitterHandler: field_twitter_handle
           };
           return (
           <>
