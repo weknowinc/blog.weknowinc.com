@@ -10,7 +10,7 @@ jobs:
 
      - run: 
         name: Build and tag docker image
-        command: docker build -t weknow/jmolivas-blog:$CIRCLE_SHA1 .
+        command: docker build -t weknow/jmolivas-blog:latest -t weknow/jmolivas-blog:$CIRCLE_SHA1 .
      
      - run: 
         name: Login and push to dockerhub
