@@ -12,6 +12,7 @@ const _isEmpty = require('lodash/isEmpty');
 const dateFormat = require('date-fns/format');
 const crypto = require('crypto');
 const dotenv = require('dotenv');
+
 const configPostCss = path.resolve(__dirname, './');
 
 dotenv.config({
@@ -77,18 +78,15 @@ exports.onCreateNode = ({ node, getNodes, actions }) => {
       }
     };
 
-    const inlineImage = /\(\/sites[^)]+\)/gi
+    const inlineImage = /\(\/sites[^)]+\)/gi;
     const nodeImages = content.match(inlineImage);
     if (nodeImages) {
       const nodes = getNodes();
-      nodeImages.forEach( element => {
+      nodeImages.forEach((element) => {
         const nodeImage = element.slice(1, -1);
-        nodeInMarkdown = nodes.find(element =>
-          (element.internal.type === `File` && element.internal.description.includes(nodeImage))
-        );
-        if (nodeInMarkdown){
-          console.log(``);
-          console.log(`Mapping ${nodeImage} on: ${node.title}`)
+        const nodeInMarkdown = nodes.find(contentNode => (contentNode.internal.type === 'File' && contentNode.internal.description.includes(nodeImage)));
+        if (nodeInMarkdown) {
+          console.log(`\nMapping ${nodeImage} on: ${node.title}`);
           content = content.replace(
             nodeImage,
             nodeInMarkdown.relativePath
