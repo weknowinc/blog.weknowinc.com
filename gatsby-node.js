@@ -7,9 +7,7 @@
 require('babel-polyfill');
 
 const path = require('path');
-const fs = require('fs-extra');
 const _camelCase = require('lodash/camelCase');
-const axios = require('axios');
 const _isEmpty = require('lodash/isEmpty');
 const dateFormat = require('date-fns/format');
 const crypto = require('crypto');
@@ -19,18 +17,6 @@ const configPostCss = path.resolve(__dirname, './');
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`
 });
-
-fs.emptyDir('./static/media/');
-
-function downloadImage(url, imagePath) {
-  return axios({ url, responseType: 'stream' })
-    .then((response) => {
-      response.data.pipe(fs.createWriteStream(imagePath));
-      return { status: true };
-    }).catch(error => ({ status: false, error: `Error: ${error.message}` }));
-}
-
-const imageReplacer = match => `/static/media/images/${match.split('/').pop()}`;
 
 const digest = str => crypto
   .createHash('md5')
@@ -65,17 +51,8 @@ exports.onCreateWebpackConfig = ({
 };
 
 // Create a slug for each recipe and set it as a field on the node.
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, getNodes, actions }) => {
   const { createNode, createNodeField } = actions;
-
-  if (node.internal.type === 'media__image') {
-    fs.ensureDir('./static/media/images/');
-    const baseDrupalSite = `${process.env.DRUPAL_HOST}`;
-    const fileNode = getNode(node.relationships.field_media_image___NODE);
-    const fileName = fileNode.url.split('/').pop();
-    console.log(`\nDownloading Image! ${baseDrupalSite}${fileNode.url}\n`);
-    downloadImage(`${baseDrupalSite}${fileNode.url}`, path.resolve(`./static/media/images/${fileName}`));
-  }
 
   if (node.internal.type === 'node__article' || node.internal.type === 'node__page') {
     createNodeField({
@@ -100,12 +77,26 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       }
     };
 
-    //* @TODO replace `jmolivas` with ${process.env.DRUPAL_DOMAIN}
-    const inlineImage = /\/sites\/jmolivas\/files\/images\//gi;
+    const inlineImage = /\(\/sites[^)]+\)/gi
     const nodeImages = content.match(inlineImage);
     if (nodeImages) {
-      content = content.replace(inlineImage, imageReplacer);
+      const nodes = getNodes();
+      nodeImages.forEach( element => {
+        const nodeImage = element.slice(1, -1);
+        nodeInMarkdown = nodes.find(element =>
+          (element.internal.type === `File` && element.internal.description.includes(nodeImage))
+        );
+        if (nodeInMarkdown){
+          console.log(``);
+          console.log(`Mapping ${nodeImage} on: ${node.title}`)
+          content = content.replace(
+            nodeImage,
+            nodeInMarkdown.relativePath
+          );
+        }
+      });
     }
+
     textNode.internal.content = content;
     textNode.internal.contentDigest = digest(content);
     createNode(textNode);
