@@ -16,4 +16,4 @@ jobs:
         name: Login and push to dockerhub
         command: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS;
-          docker push weknow/jmolivas-blog:$CIRCLE_SHA1;
+          docker push weknow/jmolivas-blog ;
