@@ -9,13 +9,19 @@ module.exports = {
   siteMetadata: {
     title: 'Blog',
   },
-  // pathPrefix: '/blog.weknowinc.com',
   plugins: [
+    {
+      resolve: 'gatsby-source-drupal',
+      options: {
+        baseUrl: `${process.env.DRUPAL_HOST}`,
+        apiBase: 'api'
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static`,
-        name: 'media_images'
+        name: 'static_images'
       }
     },
     'gatsby-plugin-sharp',
@@ -59,14 +65,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-react-helmet',
-    // 'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-source-drupal',
-      options: {
-        baseUrl: `${process.env.DRUPAL_HOST}`,
-        apiBase: 'api'
-      }
-    },
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
