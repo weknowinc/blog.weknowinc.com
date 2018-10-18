@@ -89,7 +89,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'created_formatted',
       value: dateFormat(new Date(node.created * 1000), 'MMMM Do, YYYY')
     });
-    console.log (path.resolve('./'));
     let content = node.body.value;
     const textNode = {
       id: `${node.id}-MarkdownBody`,
@@ -105,9 +104,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const inlineImage = /\/sites\/jmolivas\/files\/images\//gi;
     const nodeImages = content.match(inlineImage);
     if (nodeImages) {
-      console.log(content);
       content = content.replace(inlineImage, imageReplacer);
-      console.log(content);
     }
     textNode.internal.content = content;
     textNode.internal.contentDigest = digest(content);
