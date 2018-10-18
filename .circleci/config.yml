@@ -1,0 +1,19 @@
+version: 2
+jobs:
+ build:
+   machine: true
+   steps:
+     - checkout
+     - run: 
+        name: Move env production file pointing ot production site
+        command: mv .circleci/.env.production.dist .env.production
+
+     - run: 
+        name: Build and tag docker image
+        command: docker build -t weknow/jmolivas-blog:$CIRCLE_SHA1 .
+     
+     - run: 
+        name: Login and push to dockerhub
+        command: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS;
+          docker push weknow/jmolivas-blog:$CIRCLE_SHA1;
