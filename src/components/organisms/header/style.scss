@@ -7,6 +7,16 @@
     width: 100px;
     fill: color('primary');
   }
+  &__logo__link{
+    overflow: hidden;
+    display: block;
+    height: 60px;
+    span{
+      text-indent: -700px;
+      display: block;
+      margin-top: -25px;
+    }
+  }
   &__title{
     color: color('secondary');
     font-family: $serif-font;

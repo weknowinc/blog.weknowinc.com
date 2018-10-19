@@ -5,6 +5,7 @@
   border: none;
   background-color: color('primary');
   color: color(white);
+  overflow: hidden;
   &--secondary{
     background-color: color('secondary');
     color: color(black);
@@ -26,5 +27,10 @@
     background: transparent;
     border: none;
     padding: 0;
+  }
+  span{
+    text-indent: -700px;
+    display: block;
+    margin-top: -25px;
   }
 }

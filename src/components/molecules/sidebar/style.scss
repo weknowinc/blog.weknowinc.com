@@ -28,7 +28,13 @@
   }
   &__close{
     width: 40px;
+    overflow: hidden;
     svg{ fill: color(white); }
+    span{
+      text-indent: -700px;
+      display: block;
+      margin-top: -25px;
+    }
   }
   &__menu{
     height: 90%;

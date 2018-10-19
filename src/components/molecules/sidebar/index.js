@@ -17,6 +17,7 @@ const Sidebar = ({ showSidebar, hideSidebar }) => (
             <path d="M 136.091 191.014 L 268.151 58.954 L 270.281 61.51 L 138.647 193.144 L 136.091 191.014 Z" transform="matrix(-1, 0, 0, -1, 406.372006, 252.097996)" />
             <path d="M 268.965 191.856" />
           </svg>
+          <span>close</span>
         </Button>
       </div>
       <div className="c-sidebar__menu cell medium-12 grid-x align-center">
