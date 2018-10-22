@@ -7,7 +7,8 @@ dotenv.config({
 //* @TODO
 module.exports = {
   siteMetadata: {
-    title: `${process.env.SITE_NAME}`
+    title: `${process.env.SITE_NAME}`,
+    domain: `${process.env.PROJECT_URL}`
   },
   plugins: [
     {

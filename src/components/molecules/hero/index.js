@@ -13,7 +13,7 @@ const Hero = ({
       </div>
     )}
     <div className="c-hero__cover" style={{ backgroundColor: color }} />
-    <div className="c-hero__content cell medium-10 large-6 grid-x align-center-middle u-text-align-center">
+    <div className="c-hero__content cell small-11 medium-10 large-6 grid-x align-center-middle u-text-align-center">
       <h2 className="cell">{title}</h2>
       {!tagline ? null : <h3 className="cell c-hero__tagline">{tagline}</h3>}
       {!social ? null : (

@@ -38,6 +38,11 @@
       margin-bottom: 0;
       font-size: 60px;
       line-height: 70px;
+      @include breakpoint(small only) {
+        margin-top: 3rem;
+        font-size: 40px;
+        line-height: 45px;
+      }
     }
     *:last-child{
       margin-bottom: 0;
