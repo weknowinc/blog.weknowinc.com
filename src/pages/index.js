@@ -5,11 +5,14 @@ import Home from '../components/templates/home';
 
 const dateFormat = require('date-fns/format');
 
-const { PROJECT_URL } = process.env;
-
 const IndexPage = () => (
   <StaticQuery
     query={graphql`{
+      site{
+        siteMetadata{
+          domain
+        }
+      }
       allSiteSettingEntitySite {
         edges {
           node {
@@ -82,13 +85,14 @@ const IndexPage = () => (
       const articles = data.allNodeArticle.edges;
       const settings = data.allSiteSettingEntitySite.edges[0].node;
       const cover = data.file.childImageSharp.fluid;
+      const {domain} = data.site.siteMetadata;
       return (
         <Layout
-          postUrl={PROJECT_URL}
+          postUrl={domain}
           postTitle={settings.field_name}
           postDesc={settings.field_description}
           postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
-          postImage={`${PROJECT_URL}${cover.src}`}
+          postImage={`${domain}${cover.src}`}
           heroCover
         >
           <div className="cell medium-cell-block">

@@ -8,7 +8,6 @@ import ArticleTeaser from '../../molecules/article-teaser';
 import './style.scss';
 
 const dateFormat = require('date-fns/format');
-const { PROJECT_URL } = process.env;
 
 class TagsPage extends Component {
   constructor(props) {
@@ -31,10 +30,11 @@ class TagsPage extends Component {
     const articles = this.props.data.allNodeArticle.edges;
     const tagTitle = this.props.data.taxonomyTermTags.name;
     const tagPath = this.props.data.taxonomyTermTags.path.alias;
+    const {domain} = this.props.data.site.siteMetadata;
     const loader = <div className="cell medium-12 align-center" key="loader">Loading ...</div>;
     return (
       <Layout darkMenu
-        postUrl={`${PROJECT_URL}/tags${tagPath}`}
+        postUrl={`${domain}/tags${tagPath}`}
         postTitle={`Tag: ${tagTitle}`}
         postDesc={this.props.data.allSiteSettingEntitySite.edges[0].node.field_description}
         postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
@@ -84,6 +84,11 @@ export default TagsPage;
 
 export const query = graphql`
   query($tid: Int!) {
+    site{
+      siteMetadata{
+        domain
+      }
+    }
     allSiteSettingEntitySite {
       edges {
         node {

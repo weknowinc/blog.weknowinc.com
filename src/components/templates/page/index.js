@@ -8,16 +8,17 @@ import './style.scss';
 
 const dateFormat = require('date-fns/format');
 
-const { PROJECT_URL } = process.env;
-
-const Page = ({ data }) => (
+const Page = ({ data }) => {
+  const {domain} = data.site.siteMetadata;
+  return (
   <Layout
     showFooterCta
     darkMenu
-    postUrl={PROJECT_URL}
+    postUrl={domain}
     postTitle={data.allSiteSettingEntitySite.edges[0].node.field_name}
     postDesc={data.allSiteSettingEntitySite.edges[0].node.field_description}
     postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
+    postImage={`${domain}${data.nodePage.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
   >
     <div className="c-page u-push-top--inside--9x u-push-bottom--inside--4x">
       <div className="grid-container align-center">
@@ -38,11 +39,16 @@ const Page = ({ data }) => (
       </div>
     </div>
   </Layout>
-);
+)};
 export default Page;
 
 export const query = graphql`
   query($slug: String!) {
+    site{
+      siteMetadata{
+        domain
+      }
+    }
     allSiteSettingEntitySite {
       edges {
         node {

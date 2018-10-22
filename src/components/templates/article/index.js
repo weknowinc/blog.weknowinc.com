@@ -10,17 +10,17 @@ import Disqus from '../../atoms/disqus';
 import Share from '../../atoms/share';
 import './style.scss';
 
-const { PROJECT_URL } = process.env;
-
-const ArticlePage = ({ data }) => (
+const ArticlePage = ({ data }) => {
+  const {domain} = data.site.siteMetadata;
+  return (
   <Layout
     showFooterCta
-    postUrl={`${PROJECT_URL}${data.nodeArticle.path.alias}`}
+    postUrl={`${domain}${data.nodeArticle.path.alias}`}
     postSlug={data.nodeArticle.path.alias}
     postTitle={data.nodeArticle.title}
     postDesc={data.nodeArticle.fields.markdownBody.childMarkdownRemark.excerpt}
     postDate={data.nodeArticle.fields.created_formatted}
-    postImage={`${PROJECT_URL}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
+    postImage={`${domain}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
     isBlogPost
   >
     <Hero
@@ -48,7 +48,7 @@ const ArticlePage = ({ data }) => (
                 ))
             }
           </div>
-          <Share shareUrl={`${PROJECT_URL}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
+          <Share shareUrl={`${domain}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
         </div>
         <div className="cell small-11 medium-12 large-12">
           {!data.nodeArticle.relationships.field_related_post ? null : (
@@ -75,7 +75,7 @@ const ArticlePage = ({ data }) => (
         }
           <div className="">
             <Disqus
-              articleId={`${PROJECT_URL}${data.nodeArticle.path.alias}`}
+              articleId={`${domain}${data.nodeArticle.path.alias}`}
               title={data.nodeArticle.title}
             />
           </div>
@@ -83,11 +83,16 @@ const ArticlePage = ({ data }) => (
       </div>
     </div>
   </Layout>
-);
+)};
 export default ArticlePage;
 
 export const query = graphql`
   query($slug: String!) {
+    site{
+      siteMetadata{
+        domain
+      }
+    }
     allSiteSettingEntitySite {
       edges {
         node {
