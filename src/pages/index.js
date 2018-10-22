@@ -88,7 +88,7 @@ const IndexPage = () => (
           postTitle={settings.field_name}
           postDesc={settings.field_description}
           postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
-          postImage={cover.src}
+          postImage={`${PROJECT_URL}${cover.src}`}
           heroCover
         >
           <div className="cell medium-cell-block">
