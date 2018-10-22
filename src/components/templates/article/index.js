@@ -15,12 +15,12 @@ const { PROJECT_URL } = process.env;
 const ArticlePage = ({ data }) => (
   <Layout
     showFooterCta
-    postUrl={`${data.nodeArticle.path.alias}`}
+    postUrl={`${PROJECT_URL}${data.nodeArticle.path.alias}`}
     postSlug={data.nodeArticle.path.alias}
     postTitle={data.nodeArticle.title}
     postDesc={data.nodeArticle.fields.markdownBody.childMarkdownRemark.excerpt}
     postDate={data.nodeArticle.fields.created_formatted}
-    postImage={`${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
+    postImage={`${PROJECT_URL}${data.nodeArticle.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
     isBlogPost
   >
     <Hero
