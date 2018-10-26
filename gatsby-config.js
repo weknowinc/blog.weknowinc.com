@@ -76,7 +76,7 @@ module.exports = {
         background_color: '#eaeaea',
         theme_color: '#644b78',
         display: 'minimal-ui',
-        icon: 'static/weknow-logo-white.png' // This path is relative to the root of the site.
+        icon: 'static/weknow-logo-dark.png' // This path is relative to the root of the site.
       }
     },
     'gatsby-plugin-catch-links',

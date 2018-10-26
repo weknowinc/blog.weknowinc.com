@@ -16,7 +16,10 @@
       text-decoration: none;
     }
   }
-
+  p, a, li{
+    font-size: 1rem;
+    line-height: 1.5;
+  }
   &__related-post {
     h3 {
       color: color(excerpt);
