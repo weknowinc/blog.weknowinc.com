@@ -34,6 +34,23 @@ const IndexPage = () => (
           }
         }
       }
+      siteSettingEntitySite {
+        relationships{
+          field_hero_image {
+            relationships{
+              field_media_image {
+                localFile{
+                  childImageSharp {
+                    fluid(maxWidth: 1440, maxHeight: 560, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       file(relativePath: { eq: "hero-cover.png" }) {
         publicURL
         childImageSharp {
@@ -84,8 +101,8 @@ const IndexPage = () => (
     render={(data) => {
       const articles = data.allNodeArticle.edges;
       const settings = data.allSiteSettingEntitySite.edges[0].node;
-      const cover = data.file.childImageSharp.fluid;
-      const {domain} = data.site.siteMetadata;
+      const cover = data.siteSettingEntitySite.relationships.field_hero_image.relationships.field_media_image.localFile.childImageSharp.fluid;
+      const { domain } = data.site.siteMetadata;
       return (
         <Layout
           postUrl={domain}
