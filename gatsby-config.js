@@ -31,8 +31,8 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          `gatsby-remark-embed-video`,
-          `gatsby-remark-responsive-iframe`,
+          'gatsby-remark-embed-video',
+          'gatsby-remark-responsive-iframe',
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -69,13 +69,13 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: `${process.env.TRACKING_ID}`,
         head: false,
         anonymize: true,
         respectDNT: true
-      },
+      }
     },
     'gatsby-plugin-offline',
     {
@@ -87,7 +87,7 @@ module.exports = {
         background_color: '#eaeaea',
         theme_color: '#644b78',
         display: 'minimal-ui',
-        icon: 'static/weknow-logo-dark.png' // This path is relative to the root of the site.
+        icon: 'static/weknow-icon.png' // This path is relative to the root of the site.
       }
     },
     'gatsby-plugin-catch-links',
