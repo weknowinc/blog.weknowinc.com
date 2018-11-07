@@ -15,9 +15,10 @@
     background-size: cover;
     @include breakpoint(xxlarge up) {
       .gatsby-image-wrapper{
-        max-width: $global-max-width;
-        margin-left: auto;
-        margin-right: auto;
+        object-fit: cover;
+        // max-width: $global-max-width;
+        // margin-left: auto;
+        // margin-right: auto;
       }
     }
   }
