@@ -32,9 +32,7 @@ const ArticlePage = ({ data }) => {
       <div className="c-article u-push-top--inside--4x u-push-bottom--inside--4x">
         <div className="grid-container align-center grid-x">
           <div className="c-article__content cell small-11 medium-12 large-10 xlarge-10">
-            <div className="c-article__content">
-              { ReactHtmlParser(data.nodeArticle.fields.markdownBody.childMarkdownRemark.html) }
-            </div>
+            <div className="c-article__content" dangerouslySetInnerHTML={{ __html: data.nodeArticle.fields.markdownBody.childMarkdownRemark.html }} />
             <div className="c-article__tags">
               {
               (!data.nodeArticle.relationships.field_tags) ? null
