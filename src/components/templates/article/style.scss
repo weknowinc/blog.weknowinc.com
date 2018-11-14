@@ -15,6 +15,9 @@
     a {
       text-decoration: none;
     }
+    a:hover, a:focus{
+      text-decoration: underline;
+    }
   }
   p, a, li{
     font-size: 1rem;
@@ -39,5 +42,8 @@
   }
   span.gatsby-resp-image-background-image {
       background-image: none !important;
+  }
+  .gist .gist-meta a{
+    font-size: 12px;
   }
 }

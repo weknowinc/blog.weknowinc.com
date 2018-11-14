@@ -14,7 +14,7 @@ const Header = ({
           <div className="cell grid-x small-12 medium-9 large-7 xlarge-6 xxlarge-6 align-right grid-x">
             <div className={`cell small-3 medium-2 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><Link className="c-header__menu-link" to="/">Home</Link></div>
             <div className={`cell small-3 medium-2 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><Link className="c-header__menu-link" to="/about">About me</Link></div>
-            <div className={`cell small-6 medium-4 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><a className="c-header__menu-link c-header__menu-link--cta" href="https://weknowinc.com/contact" target="_blank" rel="noopener noreferrer">Partner with WeKnow</a></div>
+            <div className={`cell small-6 medium-4 grid-x align-center ${darkMenu ? 'c-header__menu--dark' : ''}`}><a className="c-header__menu-link c-header__menu-link--cta" href="https://weknowinc.com/contact" target="_blank" rel="noopener noreferrer">Partner with weKnow</a></div>
           </div>
         </div>
       )
