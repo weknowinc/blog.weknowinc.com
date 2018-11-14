@@ -52,7 +52,9 @@ exports.onCreateWebpackConfig = ({
 };
 
 // Create a slug for each recipe and set it as a field on the node.
-exports.onCreateNode = ({ node, getNodes, actions }) => {
+exports.onCreateNode = ({
+  node, getNodes, actions
+}) => {
   const { createNode, createNodeField } = actions;
 
   if (node.internal.type === 'node__article' || node.internal.type === 'node__page') {
@@ -87,10 +89,7 @@ exports.onCreateNode = ({ node, getNodes, actions }) => {
         const nodeInMarkdown = nodes.find(contentNode => (contentNode.internal.type === 'File' && contentNode.internal.description.includes(nodeImage)));
         if (nodeInMarkdown) {
           console.log(`\nMapping ${nodeImage} on: ${node.title}`);
-          content = content.replace(
-            nodeImage,
-            nodeInMarkdown.relativePath
-          );
+          content = content.replace(new RegExp(nodeImage, 'g'), nodeInMarkdown.relativePath);
         }
       });
     }

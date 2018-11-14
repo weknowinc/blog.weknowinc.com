@@ -9,20 +9,20 @@ import './style.scss';
 const dateFormat = require('date-fns/format');
 
 const Page = ({ data }) => {
-  const {domain} = data.site.siteMetadata;
+  const { domain } = data.site.siteMetadata;
   return (
-  <Layout
-    showFooterCta
-    darkMenu
-    postUrl={domain}
-    postTitle={data.allSiteSettingEntitySite.edges[0].node.field_name}
-    postDesc={data.allSiteSettingEntitySite.edges[0].node.field_description}
-    postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
-    postImage={`${domain}${data.nodePage.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
-  >
-    <div className="c-page u-push-top--inside--9x u-push-bottom--inside--4x">
-      <div className="grid-container align-center">
-        <div className="c-page__content cell medium-10 large-8 xlarge-8 small-11 grid-x grid-margin-x align-center">
+    <Layout
+      showFooterCta
+      darkMenu
+      postUrl={domain}
+      postTitle={data.allSiteSettingEntitySite.edges[0].node.field_name}
+      postDesc={data.allSiteSettingEntitySite.edges[0].node.field_description}
+      postDate={dateFormat(new Date(), 'MMMM Do, YYYY')}
+      postImage={`${domain}${data.nodePage.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid.src}`}
+    >
+      <div className="c-page u-push-top--inside--9x u-push-bottom--inside--4x">
+        <div className="grid-container align-center">
+          <div className="c-page__content cell medium-10 large-8 xlarge-8 small-11 grid-x grid-margin-x align-center">
           <div className="cell medium-6 small-11 large-6">
             <Img
               fluid={
@@ -36,10 +36,11 @@ const Page = ({ data }) => {
             { ReactHtmlParser(data.nodePage.fields.markdownBody.childMarkdownRemark.html) }
           </div>
         </div>
+        </div>
       </div>
-    </div>
-  </Layout>
-)};
+    </Layout>
+  );
+};
 export default Page;
 
 export const query = graphql`
