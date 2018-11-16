@@ -27,7 +27,7 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    `gatsby-plugin-twitter`,
+    'gatsby-plugin-twitter',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -78,7 +78,6 @@ module.exports = {
         respectDNT: true
       }
     },
-    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
