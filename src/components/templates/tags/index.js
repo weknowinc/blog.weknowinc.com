@@ -109,7 +109,9 @@ export const query = graphql`
       filter:{
         relationships:{
           field_tags:{
-            tid:{eq:$tid}
+            elemMatch: {
+              tid:{eq:$tid}
+            }
           }
         }
       }

@@ -125,7 +125,20 @@ module.exports = {
             })),
             query: `
             {
-              allNodeArticle(filter: {relationships: {field_tags: {tid: {eq: ${process.env.DRUPAL_RSS_FEED_TAG}}}}}, sort: {fields: created, order: DESC}) {
+              allNodeArticle(filter: {
+                relationships: {
+                  field_tags: {
+                    elemMatch: {
+                      tid: {
+                        eq: ${process.env.DRUPAL_RSS_FEED_TAG}
+                      }
+                    }
+                  }
+                }
+              }, sort: {
+                fields: created,
+                order: DESC
+              }) {
                 edges {
                   node {
                     id
