@@ -125,7 +125,7 @@ module.exports = {
             })),
             query: `
             {
-              allNodeArticle(filter: {relationships: {field_tags: {tid: {eq: 59}}}}, sort: {fields: created, order: DESC}) {
+              allNodeArticle(filter: {relationships: {field_tags: {tid: {eq: ${process.env.DRUPAL_RSS_FEED_TAG}}}}}, sort: {fields: created, order: DESC}) {
                 edges {
                   node {
                     id
@@ -148,7 +148,7 @@ module.exports = {
               }
             }
             `,
-            output: '/drupalplanet.xml',
+            output: `${process.env.DRUPAL_RSS_FEED_FILE}`,
             title: `${process.env.SITE_NAME}`
           }
         ]
