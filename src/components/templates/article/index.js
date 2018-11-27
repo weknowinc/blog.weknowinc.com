@@ -46,7 +46,7 @@ const ArticlePage = ({ data }) => {
                 ))
             }
             </div>
-            <Share shareUrl={`${domain}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler="jmolivas" />
+            <Share shareUrl={`${domain}${data.nodeArticle.path.alias}`} shareTitle={data.nodeArticle.title} sharehandler={data.allSiteSettingEntitySite.edges[0].node.field_twitter_handle} />
           </div>
           <div className="cell small-11 medium-12 large-12">
             {!data.nodeArticle.relationships.field_related_post ? null : (
@@ -97,6 +97,7 @@ export const query = graphql`
         node {
           field_name
           field_slogan
+          field_twitter_handle
         }
       }
     }

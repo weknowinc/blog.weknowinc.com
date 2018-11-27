@@ -15,7 +15,8 @@ const getSchemaOrgJSONLD = ({
   title,
   image,
   description,
-  datePublished
+  datePublished,
+  siteUrl
 }) => {
   const schemaOrgJSONLD = [
     {
@@ -63,7 +64,7 @@ const getSchemaOrgJSONLD = ({
         },
         publisher: {
           '@type': 'Organization',
-          url: 'https://jmolivas.weknowinc.com',
+          url: siteUrl,
           logo: config.logo,
           name: 'Jesus Manuel Olivas'
         },
@@ -137,13 +138,15 @@ SEO.propTypes = {
     excerpt: PropTypes.any
   }).isRequired,
   keywords: PropTypes.string,
-  postImage: PropTypes.string
+  postImage: PropTypes.string,
+  siteUrl: PropTypes.string
 };
 
 SEO.defaultProps = {
   isBlogPost: false,
   postImage: null,
-  keywords: ''
+  keywords: '',
+  siteUrl: ''
 };
 
 export default SEO;
