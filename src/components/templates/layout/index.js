@@ -49,6 +49,12 @@ class Layout extends Component {
     return (
       <StaticQuery
         query={graphql`{
+          site{
+            siteMetadata {
+              title
+              domain
+            }
+          }
           allSiteSettingEntitySite {
             edges {
               node {
@@ -70,8 +76,10 @@ class Layout extends Component {
             slug:this.props.postSlug,
             url:this.props.postUrl,
             datePublished: this.props.postDate,
-            twitterHandler: field_twitter_handle
+            twitterHandler: field_twitter_handle,
+            siteUrl: data.site.siteMetadata.domain
           };
+
           return (
           <>
             <SEO
