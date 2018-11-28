@@ -65,7 +65,7 @@
     "lodash": "^4.17.11",
     "node-sass": "^4.10.0",
     "npm": "^6.4.1",
-    "nucleon-ui": "^1.0.5",
+    "nucleon-ui": "^1.0.6",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
