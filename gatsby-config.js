@@ -129,8 +129,10 @@ module.exports = {
                 relationships: {
                   field_tags: {
                     elemMatch: {
-                      tid: {
-                        eq: ${process.env.DRUPAL_RSS_FEED_TAG}
+                      path: {
+                        alias: {
+                          eq: "/${process.env.DRUPAL_RSS_FEED_TAG}"
+                        }
                       }
                     }
                   }

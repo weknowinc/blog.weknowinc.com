@@ -83,7 +83,7 @@ TagsPage.defaultProps = {
 export default TagsPage;
 
 export const query = graphql`
-  query($tid: Int!) {
+  query($slug: String!) {
     site{
       siteMetadata{
         domain
@@ -98,7 +98,7 @@ export const query = graphql`
         }
       }
     }
-    taxonomyTermTags(tid:{eq:$tid}){
+    taxonomyTermTags( path: {alias: {eq: $slug}} ){
       tid
       name
     	path{
@@ -110,7 +110,7 @@ export const query = graphql`
         relationships:{
           field_tags:{
             elemMatch: {
-              tid:{eq:$tid}
+              path: {alias: {eq: $slug}}
             }
           }
         }

@@ -206,7 +206,7 @@ exports.createPages = ({ actions, graphql }) => {
             path: `/tags${node.path.alias}`,
             component: tagsTemplate,
             context: {
-              tid: node.tid
+              slug: node.path.alias
             }
           });
         }
