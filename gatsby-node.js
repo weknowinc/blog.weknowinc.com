@@ -6,23 +6,15 @@
 
 require('babel-polyfill');
 
-const path = require('path');
-const _camelCase = require('lodash/camelCase');
-const _isEmpty = require('lodash/isEmpty');
 const dateFormat = require('date-fns/format');
-const crypto = require('crypto');
+const path = require('path');
+const _isEmpty = require('lodash/isEmpty');
 const dotenv = require('dotenv');
-
 const configPostCss = path.resolve(__dirname, './');
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`
 });
-
-const digest = str => crypto
-  .createHash('md5')
-  .update(str)
-  .digest('hex');
 
 exports.onCreateWebpackConfig = ({
   actions
@@ -51,53 +43,26 @@ exports.onCreateWebpackConfig = ({
   });
 };
 
-// Create a slug for each recipe and set it as a field on the node.
 exports.onCreateNode = ({
-  node, getNodes, actions
+  node, actions
 }) => {
-  const { createNode, createNodeField } = actions;
-
   if (node.internal.type === 'node__article' || node.internal.type === 'node__page') {
+
+    const { createNodeField } = actions;
+
+    // Create a slug value as a field on the node.
     createNodeField({
       node,
       name: 'slug',
       value: node.path.alias.substr(1)
     });
 
+    // Create a formatted date field on the node.
     createNodeField({
       node,
       name: 'created_formatted',
       value: dateFormat(new Date(node.created * 1000), 'MMMM Do, YYYY')
     });
-    let content = node.body.value;
-    const textNode = {
-      id: `${node.id}-MarkdownBody`,
-      parent: node.id,
-      dir: path.resolve('./'),
-      internal: {
-        type: _camelCase(`${node.internal.type}MarkdownBody`),
-        mediaType: 'text/markdown'
-      }
-    };
-
-    const inlineImage = /\(\/sites[^)]+\)/gi;
-    const nodeImages = content.match(inlineImage);
-    if (nodeImages) {
-      const nodes = getNodes();
-      nodeImages.forEach((element) => {
-        const nodeImage = element.slice(1, -1);
-        const nodeInMarkdown = nodes.find(contentNode => (contentNode.internal.type === 'File' && contentNode.internal.description.includes(nodeImage)));
-        if (nodeInMarkdown) {
-          console.log(`\nMapping ${nodeImage} on: ${node.title}`);
-          content = content.replace(new RegExp(nodeImage, 'g'), nodeInMarkdown.relativePath);
-        }
-      });
-    }
-
-    textNode.internal.content = content;
-    textNode.internal.contentDigest = digest(content);
-    createNode(textNode);
-    createNodeField({ node, name: 'markdownBody___NODE', value: textNode.id });
   }
 };
 

@@ -28,6 +28,7 @@
     "@storybook/addon-knobs": "^3.4.10",
     "@storybook/addon-options": "^3.4.10",
     "@storybook/react": "^4.0.8",
+    "@weknow/gatsby-remark-drupal": "^0.3.2",
     "auth0-js": "^9.8.2",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
