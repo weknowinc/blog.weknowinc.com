@@ -27,12 +27,12 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-twitter',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           '@weknow/gatsby-remark-drupal',
+          '@weknow/gatsby-remark-twitter',
           'gatsby-remark-embed-video',
           'gatsby-remark-responsive-iframe',
           {
