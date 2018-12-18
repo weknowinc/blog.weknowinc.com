@@ -4,12 +4,12 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-require('babel-polyfill');
 
 const dateFormat = require('date-fns/format');
 const path = require('path');
 const _isEmpty = require('lodash/isEmpty');
 const dotenv = require('dotenv');
+
 const configPostCss = path.resolve(__dirname, './');
 
 dotenv.config({
@@ -47,7 +47,6 @@ exports.onCreateNode = ({
   node, actions
 }) => {
   if (node.internal.type === 'node__article' || node.internal.type === 'node__page') {
-
     const { createNodeField } = actions;
 
     // Create a slug value as a field on the node.
