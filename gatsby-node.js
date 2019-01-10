@@ -60,7 +60,7 @@ exports.onCreateNode = ({
     createNodeField({
       node,
       name: 'created_formatted',
-      value: dateFormat(new Date(node.created * 1000), 'MMMM Do, YYYY')
+      value: dateFormat(new Date(node.created), 'MMMM Do, YYYY')
     });
   }
 };
@@ -82,13 +82,13 @@ exports.createPages = ({ actions, graphql }) => {
             edges {
               node {
                 name
-                tid
+                id
                 path {
                   alias
                 }
                 relationships{
                   node__article{
-                    nid
+                    id
                   }
                 }
               }

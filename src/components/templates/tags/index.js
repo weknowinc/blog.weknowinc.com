@@ -99,7 +99,7 @@ export const query = graphql`
       }
     }
     taxonomyTermTags( path: {alias: {eq: $slug}} ){
-      tid
+      id
       name
     	path{
         alias

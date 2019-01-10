@@ -14,13 +14,13 @@ export default class MenuItem extends Component {
       parentSelected: false
     }
   }
-  
+
   componentDidMount() {
     const { category, location } = this.props;
     const parentSelected = _find(category.categoryPages, ({ node }) => (_has(location, 'pathname') && node.path.alias === location.pathname.replace(/\/$/, "")));
     this._setParentSelection(parentSelected?true:false);
   }
-  
+
   _setParentSelection = (parentSelection) => {
     this.setState({parentSelected: parentSelection});
   }
@@ -33,8 +33,8 @@ export default class MenuItem extends Component {
       return (_has(location, 'pathname') && node.path.alias === location.pathname.replace(/\/$/, ""));
     });
     return (
-      <li 
-        onClick={()=>this._setParentSelection(!this.state.parentSelected)} 
+      <li
+        onClick={()=>this._setParentSelection(!this.state.parentSelected)}
         className={`c-menu-item o-list-bare c-menu-item__parent ${(parentSelected||this.state.parentSelected) ? 'c-menu-item__parent--selected' : ''}`}>
         <span
           className="c-menu-item__link u-tiny-text u-border--bottom grid-x align-middle">
@@ -45,7 +45,7 @@ export default class MenuItem extends Component {
             category.categoryPages.map(({ node }) => {
             const currentPageSelected = (_has(location, 'pathname') && location.pathname.replace(/\/$/, "")===node.path.alias)?'c-menu-item__link--active':''
             return (
-              <li key={node.nid} className="o-list-bare u-border--bottom">
+              <li key={node.id} className="o-list-bare u-border--bottom">
                 <Link className={`c-menu-item__link u-tiny-text ${currentPageSelected}`} activeClassName="c-menu-item__link--active" to={node.path.alias}>{node.title}</Link>
               </li>
             )})
