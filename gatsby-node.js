@@ -47,6 +47,14 @@ exports.onCreateNode = ({
   node, actions
 }) => {
   if (node.internal.type === 'node__article' || node.internal.type === 'node__page') {
+    for (const prop in node) {
+      if (prop.match(/^field_.*/)) {
+        if (node[prop] === null) {
+          node[prop] = '';
+        }
+      }
+    }
+
     const { createNodeField } = actions;
 
     // Create a slug value as a field on the node.
