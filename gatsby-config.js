@@ -33,6 +33,18 @@ module.exports = {
           }
         ]
       }
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: `${process.env.SITE_NAME}`,
+        short_name: `${process.env.SHORT_NAME}`,
+        start_url: '/',
+        background_color: '#eaeaea',
+        theme_color: '#644b78',
+        display: 'minimal-ui',
+        icon: 'static/weknow-icon.png' // This path is relative to the root of the site.
+      }
+    },
   ]
 };
