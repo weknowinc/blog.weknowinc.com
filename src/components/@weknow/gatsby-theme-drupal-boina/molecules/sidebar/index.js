@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import './style.scss';
 
-import Button from '../../atoms/button';
+import Button from '@weknow/gatsby-theme-drupal-boina/src/components/atoms/button';
 
 const Sidebar = ({ showSidebar, hideSidebar }) => (
   <>
@@ -30,7 +30,6 @@ const Sidebar = ({ showSidebar, hideSidebar }) => (
               <Link className="c-sidebar__link" to="/about">About</Link>
             </li>
           </ul>
-
           <a className="c-sidebar__cta" target="_blank" rel="noopener noreferrer" href="https://weknowinc.com/contact">Partner with WeKnow</a>
         </div>
       </div>

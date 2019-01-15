@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import './style.scss';
-import Button from '../../atoms/button';
+import Button from '@weknow/gatsby-theme-drupal-boina/src/components/atoms/button';
 
 const Header = ({
   scrolled, isMobile, showSidebar, darkMenu
@@ -22,7 +22,7 @@ const Header = ({
         <div className="c-header__scrolled grid-x align-middle">
           <div className="cell grid-container grid-x align-middle">
             <Link to="/" className="c-header__logo__link">
-              <svg className="c-header__logo" viewBox="229.31500244140625 55.547000885009766 202.08700561523438 114.16500091552734" xmlns="http://www.w3.org/2000/svg">
+              <svg className="c-header__logo" width="100" viewBox="229.31500244140625 55.547000885009766 202.08700561523438 114.16500091552734" xmlns="http://www.w3.org/2000/svg">
                 <path d="M 229.315 99.334 L 238.567 99.334 L 257.492 155.477 L 277.047 99.124 L 286.51 99.124 L 305.855 153.585 L 325.2 99.124 L 334.242 99.334 L 310.902 169.306 L 299.757 169.355 L 282.515 115.105 L 262.749 169.293 L 252.235 169.355 L 229.315 99.334 Z" />
                 <path d="M 343.509 167.748" />
                 <path d="M 342.554 168.226" />
