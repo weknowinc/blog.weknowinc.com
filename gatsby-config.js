@@ -30,7 +30,16 @@ module.exports = {
             options: {
               includeDefaultCss: true
             }
-          }
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              withWebp: true,
+              maxWidth: 790,
+              linkImagesToOriginal: false,
+              quality: 70
+            }
+          },
         ]
       }
     },
