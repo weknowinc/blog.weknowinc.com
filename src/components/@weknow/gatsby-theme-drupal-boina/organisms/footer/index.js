@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import imageFooter from '../../../../static/weknow-logo-white.png';
+import imageFooter from '../../../../../../static/weknow-logo-white.png';
 
 const Footer = ({ showCta, copyContent }) => (
   <footer className="cell c-footer grid-y">
@@ -9,7 +9,7 @@ const Footer = ({ showCta, copyContent }) => (
       !showCta ? null : (
         <div className="cell c-footer__top auto u-push-top--inside--3x u-push-bottom--inside--3x">
           <div className="cell medium-3 align-center-middle grid-x">
-            <a className="c-footer__cta c-button c-button--link u-text--white" href="https://weknowinc.com/contact" target="_blank" rel="noopener noreferrer">DON'T BE A STRANGER CONTACT US</a>
+            <a className="c-footer__cta c-button c-button--link u-text--white" href="/#" target="_blank" rel="noopener noreferrer">DON'T BE A STRANGER CONTACT US</a>
           </div>
         </div>
       )

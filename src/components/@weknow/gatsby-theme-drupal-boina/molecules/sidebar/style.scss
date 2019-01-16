@@ -9,7 +9,7 @@
   height: 100vh;
   transform: translateX(20rem);
   transition: transform 200ms cubic-bezier(.17,.67,.45,.93);
-  background-image: linear-gradient(to right bottom, #af1f45 60%, #644b78 100%);
+  background-image: linear-gradient(to right bottom, color(primary) 60%, color(secondary) 100%);
   &--active{
     transform: translateX(0rem);
   }

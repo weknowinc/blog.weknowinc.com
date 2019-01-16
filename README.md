@@ -1,26 +1,27 @@
-# gatsby-starter-default
-The default Gatsby starter.
+# WeKnow Blog Template
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
+A Gatsby Starter using for the Drupal Boina Distribution
 
 ## Install
-
-Make sure that you have the Gatsby CLI program installed:
-```sh
-npm install --global gatsby-cli
+```shell
+npm install --save @weknow/gatsby-theme-drupal-boina
+```
+## How to use
+In your new site gatsby-config.js
+```js
+  __experimentalThemes: [
+    {
+      resolve: '@weknow/gatsby-theme-drupal-boina',
+      options: {
+        root: __dirname
+      }
+    }
+  ]
 ```
 
-And run from your CLI:
-```sh
-gatsby new gatsby-example-site
+## Replacing a component (shadowing)
+Create a js component in the starting with the path
 ```
-
-Then you can run it by:
-```sh
-cd gatsby-example-site
-gatsby develop
+/src/components/@weknow/gatsby-theme-drupal-boina/
 ```
-
-## Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+and follow the path to the component you want to replace.
