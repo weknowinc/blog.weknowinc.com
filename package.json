@@ -23,12 +23,8 @@
     }
   },
   "dependencies": {
-    "@weknow/gatsby-remark-twitter": "^0.2.1",
-    "@weknow/gatsby-theme-drupal-boina": "*",
+    "@weknow/gatsby-theme-drupal-boina": "^0.1.2",
     "gatsby": "^2.3.29",
-    "gatsby-remark-copy-images": "^0.2.1",
-    "gatsby-remark-embed-gist": "^1.1.7",
-    "gatsby-remark-embed-video": "^1.7.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
