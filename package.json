@@ -23,7 +23,7 @@
     }
   },
   "dependencies": {
-    "@weknow/gatsby-theme-drupal-boina": "^0.1.2",
+    "@weknow/gatsby-theme-drupal-boina": "^0.1.5",
     "gatsby": "^2.3.29",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
