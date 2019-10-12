@@ -23,11 +23,10 @@
     }
   },
   "dependencies": {
-    "@weknow/gatsby-theme-drupal-boina": "^0.1.5",
-    "gatsby": "^2.3.29",
+    "@weknow/gatsby-theme-drupal-boina": "^0.2.0",
+    "gatsby": "^2.15.36",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.10.2"
   },
   "repository": {
     "type": "git",
